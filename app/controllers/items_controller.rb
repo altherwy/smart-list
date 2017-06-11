@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
       @item = Item.new(secure_params)
 	if @item.save
       flash[:notice] = "Form submitted by #{@item.title}"
-      redirect_to items_update_path
+      redirect_to items_update_path(:id=>@item.id)
 	else
 	redirect_to root_path
 	end
@@ -19,10 +19,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-      @item = Item.find(2)
+      @item = Item.find(params[:id])
   end
 
-  def delete
+  def delete_all
+      @item = (Item.all).destroy_all
+      flash[:notice] = "All Records Deletd"
+      redirect_to root_path
   end
   
   def home
