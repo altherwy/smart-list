@@ -21,6 +21,11 @@ class ItemsController < ApplicationController
   def update
       @item = Item.find(params[:id])
   end
+  
+  def update_record
+      
+  end 
+
 
   def delete_all
       @item = (Item.all).destroy_all
