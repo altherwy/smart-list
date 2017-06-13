@@ -16,10 +16,6 @@ class ItemsController < ApplicationController
 	end
 
   end
-
-  def show_record
-      @items = Item.all
-  end
   
   def show_single_record
       @item = Item.find(params[:id])

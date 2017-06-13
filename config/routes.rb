@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'items/add'
   post 'items', to: 'items#create'
   get 'items/show_single_record'
-  get 'items/show_record'
 
   get 'items/delete_all', to: 'items#delete_all'
   

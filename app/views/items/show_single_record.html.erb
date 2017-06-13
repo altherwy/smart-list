@@ -1,3 +1,15 @@
-<div>
-<%= @item.title %>
+<div class="container">
+<%= simple_format(@item.title) %>
+<%= @item.creation_date %>
+</br>
+<%= @item.expiration_date %>
+<%= simple_format(@item.work_time.to_s) %>
+<% isCompleted = @item.completed %>
+<% if (isCompleted == true) %>
+<%= "The task is completed" %>
+<% else %>
+<%= "The work is not completed" %>
+<% end %>
+<%= link_to "Update", root_path, class: 'btn btn-success' %>
+
 </div>
