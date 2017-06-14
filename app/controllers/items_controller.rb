@@ -20,6 +20,14 @@ class ItemsController < ApplicationController
   def show_single_record
       @item = Item.find(params[:id])
   end
+  
+  def destroy
+       @item = Item.find(params[:id]).destroy
+       flash[:notice] = "#{@item.title} has been deleted"
+       redirect_to root_path
+      
+      
+  end
 
 
   def delete_all
