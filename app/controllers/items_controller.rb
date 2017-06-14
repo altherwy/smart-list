@@ -36,6 +36,15 @@ class ItemsController < ApplicationController
       redirect_to root_path
   end
   
+  def update
+      @item = Item.find(params[:id])
+     # @item.update(title: , creation_date: , expiration_date:, work_time: , completed: )
+  end
+  
+  def update_record
+      
+  end
+  
   def home
 	@items = Item.all
   end
