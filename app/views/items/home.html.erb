@@ -1,6 +1,6 @@
 <h1> My List </h1>
 <div>
 <% @items.each do |item|%>
-<%= item.title%>
-<% end %>
+<%= link_to simple_format("#{item.title}"), items_show_single_record_path(:id =>item.id)%>
+<% end %> 
 </div>

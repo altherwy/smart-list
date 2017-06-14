@@ -50,6 +50,7 @@ group :development do
 end
 
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'rails_layout'

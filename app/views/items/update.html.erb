@@ -1,2 +1,10 @@
-<h1><%= @item.title %></h1>
-
+<div class ="form">
+<%= simple_form_for @itemm do |form|%>
+<%= form.input :title%>
+<%= form.input :creation_date %>
+<%= form.input :expiration_date%>
+<%= form.input :work_time %>
+<%= form.input :completed %>
+<%= form.button :submit, 'Submit', class: 'submit' %>
+<% end %>
+</div>
