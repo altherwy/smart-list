@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
   end
   
   def update
+	@var = Item.new
       @item = Item.find(params[:id])
      # @item.update(title: , creation_date: , expiration_date:, work_time: , completed: )
   end

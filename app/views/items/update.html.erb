@@ -1,10 +1,13 @@
 <div class ="form">
-<%= simple_form_for @itemm do |form|%>
-<%= form.input :title%>
-<%= form.input :creation_date %>
+<% mo = @item.expiration_date.month %>
+<%= simple_form_for @var do |form|%>
+<%= form.input :title, placeholder: @item.title%>
+<%= form.input :creation_date, placeholder: @item.expiration_date.to_s %>
 <%= form.input :expiration_date%>
-<%= form.input :work_time %>
+<%= form.input :work_time, placeholder: @item.work_time.to_s %>
 <%= form.input :completed %>
 <%= form.button :submit, 'Submit', class: 'submit' %>
 <% end %>
+
+<%= simple_format(mo) %>
 </div>
