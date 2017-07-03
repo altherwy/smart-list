@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
     
     
   def add
-      @item  = Item.new 
+      @item  = Item.new
      
   end
   
@@ -36,10 +36,17 @@ class ItemsController < ApplicationController
   end
   
   def update
-	@var = Item.new
+	  @var  = Item.new
       @item = Item.find(params[:id])
-     # @item.update(title: , creation_date: , expiration_date:, work_time: , completed: )
+      @item.destroy
+       #@var.update(title: params[:title])
+       #@var.save!
+      
   end
+ # def patch
+  #    @var = Item.new(secure_paramss)
+  #    redirect_to root_path
+#  end
   
   def update_record
       
@@ -52,5 +59,8 @@ class ItemsController < ApplicationController
   private 
   def secure_params
       params.require(:item).permit(:title,:creation_date,:expiration_date,:work_time,:completed)
+  end
+  def secure_paramss
+      params.require(:var).permit(:title,:creation_date,:expiration_date,:work_time,:completed)
   end
 end

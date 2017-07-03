@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'items/show_single_record'
   get 'items/update'
   delete '/', to: 'items#destroy'
+  patch 'items', to: 'items#patch'
 
   get 'items/delete_all', to: 'items#delete_all'
   
