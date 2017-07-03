@@ -11,6 +11,10 @@ class ItemsController < ApplicationController
       @item = Item.new(secure_params)
 	if @item.save
       flash[:notice] = "Form submitted by #{@item.title}"
+      if flash[:isUpdate]
+         @var = Item.find(flash[:toDestroy]).destroy
+        
+      end
 	redirect_to root_path
 	end
 
@@ -38,7 +42,11 @@ class ItemsController < ApplicationController
   def update
 	  @var  = Item.new
       @item = Item.find(params[:id])
-      @item.destroy
+      flash[:isUpdate] = true
+      flash[:toDestroy] = @item.id
+     # if @var.save
+      
+     # end
        #@var.update(title: params[:title])
        #@var.save!
       
@@ -48,9 +56,9 @@ class ItemsController < ApplicationController
   #    redirect_to root_path
 #  end
   
-  def update_record
+  #def update_record
       
-  end
+  #end
   
   def home
 	@items = Item.all
@@ -59,8 +67,5 @@ class ItemsController < ApplicationController
   private 
   def secure_params
       params.require(:item).permit(:title,:creation_date,:expiration_date,:work_time,:completed)
-  end
-  def secure_paramss
-      params.require(:var).permit(:title,:creation_date,:expiration_date,:work_time,:completed)
   end
 end
