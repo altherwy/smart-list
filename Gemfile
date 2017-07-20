@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem "responders"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -54,6 +55,8 @@ gem 'autoprefixer-rails'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'rails_layout'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

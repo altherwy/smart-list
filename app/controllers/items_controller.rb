@@ -1,21 +1,34 @@
 class ItemsController < ApplicationController
 
-    
+    helper_method :sort_column, :sort_direction
+    respond_to :html, :js
+     
     
   def add
       @item  = Item.new
      
+     
   end
-  
+  #items_controller.rb
   def create
+      
       @item = Item.new(secure_params)
+    #  respond_to do |format|
 	if @item.save
       flash[:notice] = "Form submitted by #{@item.title}"
       if flash[:isUpdate]
          @var = Item.find(flash[:toDestroy]).destroy
-        
       end
-	redirect_to root_path
+	#format.html {
+      redirect_to root_path
+    
+    else
+        
+      #format.html { 
+        render action: 'add'
+      
+     #   end 
+        
 	end
 
   end
@@ -44,28 +57,30 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
       flash[:isUpdate] = true
       flash[:toDestroy] = @item.id
-     # if @var.save
-      
-     # end
-       #@var.update(title: params[:title])
-       #@var.save!
       
   end
- # def patch
-  #    @var = Item.new(secure_paramss)
-  #    redirect_to root_path
-#  end
-  
-  #def update_record
-      
-  #end
   
   def home
-	@items = Item.all
+      @items = Item.order(sort_column+ " " + sort_direction)
+      
+	
+  end
+  
+  def sort
+      @items = Item.all
+      
   end
   
   private 
   def secure_params
       params.require(:item).permit(:title,:creation_date,:expiration_date,:work_time,:completed)
+  end
+  
+  def sort_column
+    Item.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

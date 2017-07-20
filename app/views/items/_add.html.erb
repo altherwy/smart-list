@@ -1,10 +1,11 @@
 <div class ="modal-dialog modal-content modal-body">
-<%= simple_form_for @item do |form|%>
-<%= form.input :title%>
-<%= form.input :creation_date %>
+<%= simple_form_for @item, remote: true do |form|%>
+<%= render 'error_messages' %>
+<%= form.input :title, class: 'form-control'%>
+<%= form.input :creation_date, :readonly => true %>
 <%= form.input :expiration_date%>
 <%= form.input :work_time %>
 <%= form.input :completed %>
-<%= form.button :submit, 'Submit', class: 'submit' %>
+<%= form.button :submit, 'Submit', class: 'submit', remote: true %>
 <% end %>
 </div>

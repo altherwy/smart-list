@@ -11,9 +11,9 @@
 <% if (isCompleted == true) %>
 <%= simple_format("The task is completed") %>
 <% else %>
-<%= simple_format("The work is not completed") %>
+<%= simple_format("The task is not completed") %>
 <% end %>
-<%= link_to  items_update_path(:id=>@item.id), class: 'btn btn-success' do%>
+<%= link_to  items_update_path(:id=>@item.id), remote: true, class: 'btn btn-success' do%>
 <i class="glyphicon glyphicon-pencil"></i> Update
 <% end %>
 <%= link_to root_path(:id=>@item.id), method: :delete,  class: 'btn btn-danger' do %>

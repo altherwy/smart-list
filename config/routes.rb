@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'items/delete_all', to: 'items#delete_all'
   
+ 
+  
   root to:'items#home'
   
   
