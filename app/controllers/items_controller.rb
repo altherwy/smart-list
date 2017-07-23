@@ -9,13 +9,13 @@ class ItemsController < ApplicationController
      
      
   end
-  #items_controller.rb
+ 
   def create
       
       @item = Item.new(secure_params)
     #  respond_to do |format|
 	if @item.save
-      flash[:notice] = "Form submitted by #{@item.title}"
+      flash[:notice] = "Task #{@item.title} is submitted"
       if flash[:isUpdate]
          @var = Item.find(flash[:toDestroy]).destroy
       end
@@ -23,11 +23,10 @@ class ItemsController < ApplicationController
       redirect_to root_path
     
     else
-        
-      #format.html { 
+
         render action: 'add'
       
-     #   end 
+   
         
 	end
 
@@ -73,7 +72,7 @@ class ItemsController < ApplicationController
   
   private 
   def secure_params
-      params.require(:item).permit(:title,:creation_date,:expiration_date,:work_time,:completed)
+      params.require(:item).permit(:title,:due_date,:work_time,:completed)
   end
   
   def sort_column

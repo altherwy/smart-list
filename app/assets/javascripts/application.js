@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require rails.validations
-//= require rails.validations.simple_form
+//= require jquery.slimscroll.min
 //= require_tree .

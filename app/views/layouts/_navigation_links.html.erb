@@ -1,5 +1,21 @@
 <%# add navigation links to this file %>
 
+
+      <ul class="nav navbar-nav">
 <li><%= link_to 'Add',items_add_path, remote: true %> </li>
-<li><%= link_to 'Delete All Records', items_delete_all_path %> </li>
+<li><%= link_to 'Delete All Tasks', items_delete_all_path %> </li>
 <li><% link_to 'Update', items_update_path, remote: true %> </li>
+<li class = "dropdown messages-menu"> 
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+     List    
+    </a>
+		<ul class="dropdown-menu">
+			<li class = "header"> choose a color </li>
+			<li>
+				<ul class = "menu">
+					<h4> Pink </h4>
+				</ul>
+			</li> 
+		</ul>
+	 </li>
+</ul>

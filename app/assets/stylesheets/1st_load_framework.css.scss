@@ -1,8 +1,12 @@
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "AdminLTE";
+@import "skins/skin-green";
 
 // make all images responsive by default
+
+//$red: #f44336;
 img {
   @extend .img-responsive;
   margin: 0 auto;
@@ -30,6 +34,10 @@ img {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-lg;
+  }
+.cancel-submit {
+  @extend .submit ;
+  background-color: red;	
   }
 // apply styles to HTML elements
 // to make views framework-neutral

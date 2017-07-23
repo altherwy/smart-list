@@ -3,10 +3,9 @@
 <div class="modal-content">
  <div class="modal-body">
 <%= simple_format(@item.title) %>
-<%= @item.creation_date %>
-</br>
-<%= @item.expiration_date %>
-<%= simple_format(@item.work_time.to_s) %>
+<%= @item.due_date %>
+<% wor = simple_format(@item.work_time.to_s << ' hrs') %>
+<%= wor %>
 <% isCompleted = @item.completed %>
 <% if (isCompleted == true) %>
 <%= simple_format("The task is completed") %>

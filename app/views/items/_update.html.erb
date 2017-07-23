@@ -1,13 +1,11 @@
 <div class ="modal-dialog modal-content modal-body">
-<div class ="form">
-<%= simple_form_for @var do |form|%>
-<!-- <%= form.input :id, input_html: {value: @item.id} %>-->
+<%= simple_form_for @var, remote: true do |form|%>
+<%= render 'error_messages' %>
 <%= form.input :title, input_html: {value: @item.title}%>
-<%= form.input :creation_date, input_html: {value: @item.expiration_date} %>
-<%= form.input :expiration_date%>
+<%= form.input :due_date%>
 <%= form.input :work_time, input_html: {value: @item.work_time} %>
 <%= form.input :completed, input_html: {:checked => @item.completed}%>
 <%= form.button :submit, 'Submit', class: 'submit' %>
+<%= link_to 'Cancel', :back , class: 'cancel-submit' %>
 <% end %>
-</div>
 </div>
