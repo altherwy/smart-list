@@ -14,23 +14,21 @@
           </a>
       </div>
     </div>
-    <form action="#" class="sidebar-form" method="get">
-      <div class="input-group">
-        <input class="form-control" name="q" placeholder="Search..." type="text" />
-        <span class="input-group-btn">
-        <button class="btn btn-flat" id="search-btn" name="search" type="submit">
-        <i class="fa fa-search">
-        </i></button></span>
+   
+      
+      <div>  
+			<%= link_to  items_update_path, remote: true, class: 'btn' do%>
+			<i class="glyphicon glyphicon-pencil"></i> Add List
+			<% end %>
+         
       </div>
-    </form>
+    
     <ul class="sidebar-menu">
       <li class="header">
         Lists
       </li>
       <li class="active">
-        <a href="#">
-      <span>Link</span>
-      </a>
+        <%= link_to "List", root_path%>
       </li>
       <li>
         <a href="#">
