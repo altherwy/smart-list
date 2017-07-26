@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'items', to: 'items#create'
   get 'items/show_single_record'
   get 'items/update'
+  get 'items/show_all_records'
   delete '/', to: 'items#destroy'
   patch 'items', to: 'items#patch'
 

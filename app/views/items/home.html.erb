@@ -1,26 +1,4 @@
 
 	  <!-- home.html.erb -->
-	 
-	  <div class="table-responsive">
-	  <table class="table">
-	      <thead>
-	      <tr>
-	          <th><%= sortable "title"%></th>
-	          <th><%= sortable "work_time"%></th>
-	          <th>Due Date</th>
-        
-	      </tr>
-	      </thead>
-	      <tbody>
-	  <% @items.each do |item|%>
-	  <tr>
-	      <td><%= link_to simple_format("#{item.title}"), items_show_single_record_path(:id =>item.id), remote: true%></td>
-	      <td><%= item.work_time.to_s << ' hrs'%></td>
-	      <td><%= item.due_date%></td>
-    
-	  </tr>
-	  <% end %>
-	      </tbody>
-	  </table>
-	  </div>
+	 <div id="home-items"></div>
 <div id="items-modal"></div>

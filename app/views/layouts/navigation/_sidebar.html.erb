@@ -17,7 +17,7 @@
 	<!-- Add a new list button -->
 	
 	
-	<%= form_for @list, url: {action: "create"}, html: {class: "sidebar-form"} do |f| %>
+	<%= form_for @list, url: {:controller=>'lists', action: "create"}, html: {class: "sidebar-form"} do |f| %>
 	  <%= f.text_field :name, placeholder: "New list ...", label: false, input_html: { class: 'form-control'} %>
 	  <%= f.submit "Create" %>
 	<% end %>
@@ -32,13 +32,16 @@
       
       
     
-    <ul class="sidebar-menu">
+    <ul class="sidebar-menu navbar-inverse sidebar">
       <li class="header">
         Lists
       </li>
-      <li class="active">
-        <%= link_to "List", root_path%>
-      </li>
+      <% @lists.each do |list| %>
+          <li>
+            <%= link_to simple_format(list.name), items_show_all_records_path(:id=>list.id), remote: true %>
+          </li>  
+      <% end %>
+      
       <li>
         <a href="#">
         <span>Another Link</span>

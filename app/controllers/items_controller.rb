@@ -60,14 +60,16 @@ class ItemsController < ApplicationController
   end
   
   def home
-    @list = List.new
-      @items = Item.order(sort_column+ " " + sort_direction)
-      
-	
+      @list = List.new
+      @lists = List.all
+  end
+  
+  def show_all_records
+       @items = Item.order(sort_column+ " " + sort_direction)
   end
   
   def sort
-      @items = Item.all
+      @items = Item.find(params[:id])
       
   end
   

@@ -7,6 +7,7 @@ class ListsController < ApplicationController
     @list = List.new(secure_params)
     if @list.save
       flash[:notice] = "List #{@list.name} is created"
+      redirect_to root_path
     end
   end
   
