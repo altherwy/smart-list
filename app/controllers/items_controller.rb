@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
     helper_method :sort_column, :sort_direction
     respond_to :html, :js
      
-    
+  
   def add
       @item  = Item.new
      
@@ -60,6 +60,7 @@ class ItemsController < ApplicationController
   end
   
   def home
+    @list = List.new
       @items = Item.order(sort_column+ " " + sort_direction)
       
 	

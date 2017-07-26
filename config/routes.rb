@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # List Routing
+  get 'lists/new'
+  post 'lists', to: 'lists#create'
+  
+  
+  # Item Routing
   get 'items/add'
   post 'items', to: 'items#create'
   get 'items/show_single_record'

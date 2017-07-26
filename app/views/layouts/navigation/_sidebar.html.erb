@@ -14,14 +14,23 @@
           </a>
       </div>
     </div>
+	<!-- Add a new list button -->
+	
+	
+	<%= form_for @list, url: {action: "create"}, html: {class: "sidebar-form"} do |f| %>
+	  <%= f.text_field :name, placeholder: "New list ...", label: false, input_html: { class: 'form-control'} %>
+	  <%= f.submit "Create" %>
+	<% end %>
+	
+	
+   
+	
+	<div id="new-list" class="input-group">
+	</div>
+	
    
       
-      <div>  
-			<%= link_to  items_update_path, remote: true, class: 'btn' do%>
-			<i class="glyphicon glyphicon-pencil"></i> Add List
-			<% end %>
-         
-      </div>
+      
     
     <ul class="sidebar-menu">
       <li class="header">
