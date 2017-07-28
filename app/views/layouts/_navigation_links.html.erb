@@ -1,22 +1,25 @@
 <%# add navigation links to this file %>
 
+<%# lists %>
+<% @lists.each do |list| %>
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
+    <ul class="dropdown-menu forAnimate" role="menu">
+        <li>
+            <%= link_to simple_format(list.name), items_show_all_records_path(:id=>list.id), remote: true %>
+        </li>
+    </ul>
+</li>
+<% end %>
 
-      <ul class="nav navbar-nav">
-<li><%= link_to 'Add',items_add_path, remote: true %> </li>
-<li><%= link_to 'Delete All Tasks', items_delete_all_path %> </li>
+<%# items %>
+<li><% link_to 'Add',items_add_path, remote: true %> </li>
+<li>
+    <%= link_to items_delete_all_path do %>
+        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
+        Delete All Tasks
+    <% end %>
+</li>
 <li><% link_to 'Update', items_update_path, remote: true %> </li>
 
-<li class = "dropdown messages-menu"> 
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-     List    
-    </a>
-		<ul class="dropdown-menu">
-			<li class = "header"> choose a color </li>
-			<li>
-				<ul class = "menu">
-					<h4> Pink </h4>
-				</ul>
-			</li> 
-		</ul>
-	 </li>
-</ul>
+

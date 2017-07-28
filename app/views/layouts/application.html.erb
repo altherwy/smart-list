@@ -8,19 +8,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
   </head>
-  <body class= "fixed skin-purple-light">
- 	 <div class ="wrapper">
-        <%= render 'layouts/navigation' %>
-		<%= render 'layouts/navigation/sidebar'%>
-  	  	<div class="content-wrapper"> 
-	  	   
-	         <%= render 'layouts/messages' %>
-            <%= yield %>
-		  
-	   	</div>
-	</div> 
-	
-        <%= render 'layouts/navigation/footer' %>
+  <body>
+ 	
+    <%= render 'layouts/navigation' %>
+		
+  	  <main class="main">
+       <%= render 'layouts/messages' %>
+       <%= yield %>
+      </main>
+	  	   <!-- <%= render 'layouts/navigation/footer' %> -->
 
     </body>
 </html>

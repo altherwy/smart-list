@@ -1,26 +1,24 @@
 <%# navigation styled for Bootstrap 3.0 %>
-<header class="main-header">
-	<a class = "logo" href="/">
-		Smart List
-	</a>
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-  <div class="container">
+<nav class="navbar navbar-inverse sidebar" role="navigation">
+  <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <!-- This is for the button with three bars when the window minimized -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      
+      <a class="navbar-brand" href="#">Smart List</a>
     </div>
-    <div class="collapse navbar-collapse">
-		
-      
-        <%= render 'layouts/navigation_links' %>
-      
     
-</div>
+    
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+		
+      <ul class="nav navbar-nav">
+      <%= render 'layouts/navigation_links' %>
+      </ul>
+    
+    </div>
   </div>
 </nav>
-</header>
