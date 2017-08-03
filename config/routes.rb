@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'items/update'
   get 'items/show_all_records'
   delete '/', to: 'items#destroy'
+  delete '/items/show_all_records', to: 'items#destroy'
   patch 'items', to: 'items#patch'
 
   get 'items/delete_all', to: 'items#delete_all'

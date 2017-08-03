@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
          @var = Item.find(flash[:toDestroy]).destroy
       end
 	#format.html {
-      redirect_to root_path
+      render items_show_all_records_path(:id=>params[:l_id])
     
     else
 
@@ -38,9 +38,13 @@ class ItemsController < ApplicationController
   
   def destroy
        @item = Item.find(params[:id]).destroy
-       flash[:notice] = "#{@item.title} has been deleted"
-       redirect_to root_path
-      
+       
+       #redirect_to root_path
+       respond_to do |format|
+         show_all_records
+         format.js { render "show_all_records"} 
+         
+       end
       
   end
 
@@ -66,16 +70,19 @@ class ItemsController < ApplicationController
   
   def show_all_records
        @items = Item.order(sort_column+ " " + sort_direction)
+       
+       
   end
   
   def sort
+    # id here is the list_id
       @items = Item.find(params[:id])
       
   end
   
   private 
   def secure_params
-      params.require(:item).permit(:title,:due_date,:work_time,:completed)
+      params.require(:item).permit(:title,:due_date,:work_time,:completed,:list_id)
   end
   
   def sort_column

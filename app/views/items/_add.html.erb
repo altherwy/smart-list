@@ -5,6 +5,7 @@
 <%= form.input :due_date%>
 <%= form.input :work_time %>
 <%= form.input :completed %>
-<%= form.button :submit, 'Submit', class: 'submit' %>
+<% form.input :list_id, input_html: {value: :list_id} %>
+<%= form.button :submit, name: 'l_id', value: '1', class: 'submit'%>
 <% end %>
 </div>

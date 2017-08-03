@@ -1,4 +1,9 @@
-<div class="table-responsive">
+<div>
+	
+	<%= link_to items_add_path(:list_id=>params[:id]), remote: true, class: 'btn btn-success' do%>
+		<i class="glyphicon glyphicon-pencil"></i> Add Task
+	<% end %>	
+	<div class="table-responsive">
 	  <table class="table">
 	      <thead>
 	      <tr>
@@ -11,12 +16,13 @@
 	      <tbody>
 	  <% @items.each do |item|%>
 	  <tr>
-	      <td><%= link_to simple_format("#{item.title}"), items_show_single_record_path(:id =>item.id), remote: true%></td>
+	      <td><%= link_to simple_format("#{item.title}"), 				items_show_single_record_path(:id =>item.id, :list_id=>params[:id]), remote: true%></td>
 	      <td><%= item.work_time.to_s << ' hrs'%></td>
 	      <td><%= item.due_date%></td>
     
 	  </tr>
 	  <% end %>
 	      </tbody>
-	  </table>
-	  </div>
+	  </table>	  
+	</div>
+</div>
