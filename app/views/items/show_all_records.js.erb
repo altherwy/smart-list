@@ -1,1 +1,5 @@
 $("#home-items").html("<%= j render 'show_all_records'%>")
+$(document).on("click","#add-item, #delete-item, #update-item",function(){
+                            $("#general-form").css("display", "none");
+                            });
+

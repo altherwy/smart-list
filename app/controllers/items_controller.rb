@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-
+    
+   
     helper_method :sort_column, :sort_direction
     respond_to :html, :js
      
@@ -13,14 +14,25 @@ class ItemsController < ApplicationController
   def create
       
       @item = Item.new(secure_params)
-    #  respond_to do |format|
 	if @item.save
-      flash[:notice] = "Task #{@item.title} is submitted"
+        s = "submitted"
+        
+      
+      
       if flash[:isUpdate]
+          s = "updated"
          @var = Item.find(flash[:toDestroy]).destroy
+         
+         
       end
-	#format.html {
-      render items_show_all_records_path(:id=>params[:l_id])
+       flash[:notice] = "Task #{@item.title} is #{s}"
+      
+            respond_to do |format|
+                show_all_records
+               format.js {render "show_all_records"}
+                
+                
+            end
     
     else
 
@@ -29,6 +41,7 @@ class ItemsController < ApplicationController
    
         
 	end
+    
 
   end
   
@@ -38,8 +51,8 @@ class ItemsController < ApplicationController
   
   def destroy
        @item = Item.find(params[:id]).destroy
-       
-       #redirect_to root_path
+       flash[:warning] = "Task #{@item.title} is deleted"
+     
        respond_to do |format|
          show_all_records
          format.js { render "show_all_records"} 
@@ -61,9 +74,11 @@ class ItemsController < ApplicationController
       flash[:isUpdate] = true
       flash[:toDestroy] = @item.id
       
+      
   end
   
   def home
+      
       @list = List.new
       @lists = List.all
   end

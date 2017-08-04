@@ -1,4 +1,4 @@
-<div class ="modal-dialog modal-content modal-body">
+<div class ="modal-dialog modal-content modal-body" id="general-form">
 <%= simple_form_for @item, remote: true do |form|%>
 <%= render 'error_messages' %>
 <%= form.input :title, class: 'form-control'%>
@@ -6,6 +6,6 @@
 <%= form.input :work_time %>
 <%= form.input :completed %>
 <% form.input :list_id, input_html: {value: :list_id} %>
-<%= form.button :submit, name: 'l_id', value: '1', class: 'submit'%>
+<%= form.button :submit, class: 'submit', id: "add-item"%>
 <% end %>
 </div>
