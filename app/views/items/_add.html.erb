@@ -5,7 +5,7 @@
 <%= form.input :due_date%>
 <%= form.input :work_time %>
 <%= form.input :completed %>
-<% form.input :list_id, input_html: {value: :list_id} %>
+<%= form.hidden_field :list_id, value: params[:list_id] %>
 <%= form.button :submit, class: 'submit', id: "add-item"%>
 <% end %>
 </div>

@@ -5,6 +5,7 @@
 <%= form.input :due_date%>
 <%= form.input :work_time, input_html: {value: @item.work_time} %>
 <%= form.input :completed, input_html: {:checked => @item.completed}%>
+<%= form.hidden_field :list_id, value: @item.list_id %>
 <%= form.button :submit, 'Submit', class: 'submit', id: "update-item" %>
 <%= link_to 'Cancel', :back , class: 'cancel-submit' %>
 <% end %>

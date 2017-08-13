@@ -3,24 +3,37 @@
 <%# lists %>
 
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-list-alt"></span></a>
 <% @lists.each do |list| %>
     <ul class="dropdown-menu forAnimate" role="menu">
         <li>
             <%= link_to simple_format(list.name), 				items_show_all_records_path(:id=>list.id), remote: true %>
         </li>
     </ul>
+	<% end %>
 </li>
-<% end %>
+
 
 <%# items %>
+
+
 <li><% link_to 'Add',items_add_path, remote: true %> </li>
+
+
+<%# add new list %>
 <li>
-    <%= link_to items_delete_all_path do %>
-        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
+	<%= link_to lists_new_path, remote: true do%>
+		<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-plus-sign"></span> Add List
+	<% end %>
+</li>
+
+<%# delete all items %>
+<li>
+    <%= link_to items_delete_all_path, remote: true do %>
+        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-trash"></span>
         Delete All Tasks
     <% end %>
 </li>
 <li><% link_to 'Update', items_update_path, remote: true %> </li>
-
+<div id="new-list"></div>
 

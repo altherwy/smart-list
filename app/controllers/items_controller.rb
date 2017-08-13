@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
        flash[:notice] = "Task #{@item.title} is #{s}"
       
             respond_to do |format|
-                show_all_records
+                show_all_records(@item.list_id, true)
                format.js {render "show_all_records"}
                 
                 
@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
 
         render action: 'add'
       
-   
+        
         
 	end
     
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
        flash[:warning] = "Task #{@item.title} is deleted"
      
        respond_to do |format|
-         show_all_records
+         show_all_records(@item.list_id,true)
          format.js { render "show_all_records"} 
          
        end
@@ -63,9 +63,12 @@ class ItemsController < ApplicationController
 
 
   def delete_all
-      @item = (Item.all).destroy_all
-      flash[:notice] = "All Records Deletd"
-      redirect_to root_path
+    respond_to do |format|
+      format.js {render :js => "delete_all_confirm();" }
+    end
+#      @item = (Item.all).destroy_all
+    #  flash[:notice] = "All Records Deletd"
+     # redirect_to root_path
   end
   
   def update
@@ -83,9 +86,12 @@ class ItemsController < ApplicationController
       @lists = List.all
   end
   
-  def show_all_records
-       @items = Item.order(sort_column+ " " + sort_direction)
-       
+  def show_all_records(listID=0, flag = false)
+    if(flag)
+        @items = Item.where(list_id: listID).order(sort_column+ " " + sort_direction)
+      else
+       @items = Item.where(list_id: params[:id]).order(sort_column+ " " + sort_direction)
+     end
        
   end
   
