@@ -1,3 +1,4 @@
+
 class ItemsController < ApplicationController
     
    
@@ -25,7 +26,7 @@ class ItemsController < ApplicationController
          
          
       end
-       flash[:notice] = "Task #{@item.title} is #{s}"
+       #flash[:notice] = "Task #{@item.title} is #{s}"
       
             respond_to do |format|
                 show_all_records(@item.list_id, true)
@@ -51,7 +52,7 @@ class ItemsController < ApplicationController
   
   def destroy
        @item = Item.find(params[:id]).destroy
-       flash[:warning] = "Task #{@item.title} is deleted"
+     #  flash[:warning] = "Task #{@item.title} is deleted"
      
        respond_to do |format|
          show_all_records(@item.list_id,true)
@@ -63,12 +64,8 @@ class ItemsController < ApplicationController
 
 
   def delete_all
-    respond_to do |format|
-      format.js {render :js => "delete_all_confirm();" }
-    end
-#      @item = (Item.all).destroy_all
-    #  flash[:notice] = "All Records Deletd"
-     # redirect_to root_path
+    Item.all.destroy_all
+    redirect_to root_path
   end
   
   def update

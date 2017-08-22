@@ -7,6 +7,6 @@
 <%= form.input :completed, input_html: {:checked => @item.completed}%>
 <%= form.hidden_field :list_id, value: @item.list_id %>
 <%= form.button :submit, 'Submit', class: 'submit', id: "update-item" %>
-<%= link_to 'Cancel', :back , class: 'cancel-submit' %>
+<%= link_to 'Cancel', items_show_all_records_path(:id=>@item.list_id) , id: "update-item", class: 'btn btn-default', remote: true %>
 <% end %>
 </div>

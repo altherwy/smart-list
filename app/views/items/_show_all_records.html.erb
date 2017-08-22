@@ -1,8 +1,10 @@
 <div>
-	
+	<!-- add task button -->
 	<%= link_to items_add_path(:list_id=>params[:id]), remote: true, class: 'btn btn-success' do%>
 		<i class="glyphicon glyphicon-plus"></i> Add Task
 	<% end %>	
+	
+	
 	<div class="table-responsive">
 	  <table class="table">
 	      <thead>
@@ -16,7 +18,16 @@
 	      <tbody>
 	  <% @items.each do |item|%>
 	  <tr>
+        <% if item.completed? %>
+	      <td id="new_title"><%= link_to simple_format("#{item.title}"), 				items_show_single_record_path(:id =>item.id, :list_id=>params[:id]), remote: true%></td>
+	      <% else %>
+	      
 	      <td><%= link_to simple_format("#{item.title}"), 				items_show_single_record_path(:id =>item.id, :list_id=>params[:id]), remote: true%></td>
+	      <% end %>
+	      
+	      
+	      
+	      
 	      <td><%= item.work_time.to_s << ' hrs'%></td>
 	      <td><%= item.due_date%></td>
     

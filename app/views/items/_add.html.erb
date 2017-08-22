@@ -6,6 +6,7 @@
 <%= form.input :work_time %>
 <%= form.input :completed %>
 <%= form.hidden_field :list_id, value: params[:list_id] %>
-<%= form.button :submit, class: 'submit', id: "add-item"%>
+<%= form.button :submit,'Submit', class: 'submit', id: "add-item"%>
+<%= link_to 'Cancel', items_show_all_records_path(id: params[:list_id]),id: 'add-item', class: 'btn btn-default', remote: true %>
 <% end %>
 </div>
